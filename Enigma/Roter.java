@@ -36,6 +36,26 @@ public class Roter {
             case "IC":
                 map = new char[] {'D','M','T','W','S','I','L','R','U','Y','Q','N','K','F','E','J','C','A','Z','B','P','G','X','O','H','V'};
                 break;
+            case "IIC":
+                map = new char[] {'H','Q','Z','G','P','J','T','M','O','B','L','N','C','I','F','D','Y','A','W','V','E','U','S','R','K','X'};
+                break;
+            
+            case "IIIC":
+                map = new char[] {'U','Q','N','T','L','S','Z','F','M','R','E','H','D','P','X','K','I','B','V','Y','G','J','C','W','O','A'};
+                break;
+
+            case "I":
+                map = new char[] {'J','G','D','Q','O','X','U','S','C','A','M','I','F','R','V','T','P','N','E','W','K','B','L','Z','Y','H'};
+                break;
+
+            case "II":
+                map = new char[] {'N','T','Z','P','S','F','B','O','K','M','W','R','C','J','D','I','V','L','A','E','Y','U','X','H','G','Q'};
+                break;
+
+            case "III":
+                map = new char[] {'J','V','I','U','B','H','T','C','D','Y','A','K','E','Q','Z','P','O','S','G','X','N','R','M','W','F','L'};
+                break;
+
         }
 
         for (int i = 0; i < map.length; i++) {
