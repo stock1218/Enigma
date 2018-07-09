@@ -3,9 +3,11 @@ import java.util.HashMap;
 public class Roter {
 
     private HashMap<Integer, Integer[]> mapping;
-    private int position;
+    private int position, turnoverPos;
+    private boolean turnover;
 
     public Roter(String type) {
+        position = 0;
         mapping = setMapping(type);
 
     }
@@ -23,12 +25,30 @@ public class Roter {
     }
 
     public char getValue(char input, int Vector) {
-        int res = mapping.get((int)input)[Vector];
+        boolean turnover = false;
+        if(position == turnoverPos) {
+            turnover = true;
+            position = -1;
+        }
+
+        position++;
+
+        int res = mapping.get((int)input + position)[Vector];
         return (char) res;
+    }
+
+    public boolean checkTurnover() {
+        if(turnover == true) {
+            turnover = false;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private HashMap<Integer, Integer[]> setMapping(String type) {
         HashMap<Integer, Integer[]> res = new HashMap<>();
+        turnoverPos = 25;
         char[] map = null;
         
         //need to add more roters
@@ -46,14 +66,17 @@ public class Roter {
 
             case "I":
                 map = new char[] {'J','G','D','Q','O','X','U','S','C','A','M','I','F','R','V','T','P','N','E','W','K','B','L','Z','Y','H'};
+                turnoverPos = 16;
                 break;
 
             case "II":
                 map = new char[] {'N','T','Z','P','S','F','B','O','K','M','W','R','C','J','D','I','V','L','A','E','Y','U','X','H','G','Q'};
+                turnoverPos = 4;
                 break;
 
             case "III":
                 map = new char[] {'J','V','I','U','B','H','T','C','D','Y','A','K','E','Q','Z','P','O','S','G','X','N','R','M','W','F','L'};
+                turnoverPos = 21;
                 break;
 
         }
