@@ -2,9 +2,10 @@ import java.util.HashMap;
 
 public class Roter {
 
+    //mapping for inputs to outputs
     private HashMap<Integer, Integer[]> mapping;
+    //current position and turnover notch positions
     private int position, turnoverPos;
-    private boolean turnover;
 
     public Roter(String type) {
         position = 0;
@@ -25,31 +26,33 @@ public class Roter {
     }
 
     public char getValue(char input, int Vector) {
-        boolean turnover = false;
-        if(position == turnoverPos) {
-            turnover = true;
-            position = -1;
-        }
-
-        position++;
-
         int res = mapping.get((int)input + position)[Vector];
         return (char) res;
     }
 
-    public boolean checkTurnover() {
-        if(turnover == true) {
-            turnover = false;
-            return true;
-        } else {
-            return false;
+    public int shift() {
+        int turnover = 0;
+        //check turnover
+        if(position == turnoverPos) {
+            turnover++;
         }
+
+        //wraparound for router
+        if(position == 25) {
+            position = 0;
+        } else  {
+            position++;
+        }
+
+        //return a 1 to add to the next router's shift
+        return turnover;
+        
     }
 
     private HashMap<Integer, Integer[]> setMapping(String type) {
         HashMap<Integer, Integer[]> res = new HashMap<>();
         turnoverPos = 25;
-        char[] map = null;
+        char[] map = new char[26];
         
         //need to add more roters
         switch (type) {
