@@ -30,6 +30,10 @@ public class Roter {
         return (char) res;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public int shift() {
         int turnover = 0;
         //check turnover
