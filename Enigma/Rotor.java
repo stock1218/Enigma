@@ -1,21 +1,21 @@
 import java.util.HashMap;
 
-public class Roter {
+public class Rotor {
 
     //mapping for inputs to outputs
     private HashMap<Integer, Integer[]> mapping;
     //current position and turnover notch positions
     private int position, turnoverPos;
 
-    public Roter(String type) {
+    public Rotor(String type) {
         position = 0;
         mapping = setMapping(type);
 
     }
 
-    public Roter(String type, int offset) {
+    public Rotor(String type, int offset) {
         mapping = setMapping(type);
-        
+
         /*plan to create a custom error here
         if (offset < 1)
             throw new IllegalArgumentException("Offset must be more than 0");
@@ -37,24 +37,24 @@ public class Roter {
             turnover++;
         }
 
-        //wraparound for router
+        //wraparound for rotor
         if(position == 25) {
             position = 0;
         } else  {
             position++;
         }
 
-        //return a 1 to add to the next router's shift
+        //return a 1 to add to the next rotor's shift
         return turnover;
-        
+
     }
 
     private HashMap<Integer, Integer[]> setMapping(String type) {
         HashMap<Integer, Integer[]> res = new HashMap<>();
         turnoverPos = 25;
         char[] map = new char[26];
-        
-        //need to add more roters
+
+        //need to add more rotors
         switch (type) {
             case "IC":
                 map = new char[] {'D','M','T','W','S','I','L','R','U','Y','Q','N','K','F','E','J','C','A','Z','B','P','G','X','O','H','V'};
@@ -62,7 +62,7 @@ public class Roter {
             case "IIC":
                 map = new char[] {'H','Q','Z','G','P','J','T','M','O','B','L','N','C','I','F','D','Y','A','W','V','E','U','S','R','K','X'};
                 break;
-            
+
             case "IIIC":
                 map = new char[] {'U','Q','N','T','L','S','Z','F','M','R','E','H','D','P','X','K','I','B','V','Y','G','J','C','W','O','A'};
                 break;
@@ -94,7 +94,7 @@ public class Roter {
 
             Integer[] array1 = new Integer[] {i2, arg1};
             Integer[] array2 = new Integer[] {arg2, i1};
-            
+
             res.put(i1, array1);
             res.put(i2, array2);
 
